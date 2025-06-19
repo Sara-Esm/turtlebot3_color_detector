@@ -1,0 +1,89 @@
+[0.268s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo -- -j8 -l8
+[3.911s] [ 25%] Built target turtlebot3_drive
+[3.911s] [ 50%] Built target obstacles
+[3.911s] [ 75%] Built target obstacle2
+[3.912s] [100%] Built target obstacle1
+[4.004s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo -- -j8 -l8
+[4.006s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo
+[4.135s] -- Install configuration: ""
+[4.135s] -- Execute custom install script
+[4.136s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/lib/turtlebot3_gazebo/turtlebot3_drive
+[4.136s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/empty_world.launch.py
+[4.136s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/robot_state_publisher.launch.py
+[4.143s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/spawn_turtlebot3.launch.py
+[4.143s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_dqn_stage1.launch.py
+[4.144s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_dqn_stage2.launch.py
+[4.144s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_dqn_stage3.launch.py
+[4.144s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_dqn_stage4.launch.py
+[4.144s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_house.launch.py
+[4.145s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//launch/turtlebot3_world.launch.py
+[4.145s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_burger/model-1_4.sdf
+[4.145s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_burger/model.config
+[4.146s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_burger/model.sdf
+[4.146s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/burger_base.dae
+[4.146s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/lds.dae
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/r200.dae
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/tire.dae
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/waffle_base.dae
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/meshes/waffle_pi_base.dae
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_common/model.config
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/goal_box/model.config
+[4.147s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/goal_box/model.sdf
+[4.148s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/inner_walls/model.config
+[4.148s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/inner_walls/model.sdf
+[4.148s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/model.config
+[4.148s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/model.sdf
+[4.149s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle1/model.config
+[4.149s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle1/model.sdf
+[4.149s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle2/model.config
+[4.149s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle2/model.sdf
+[4.150s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle_plugin/CMakeLists.txt
+[4.150s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle_plugin/obstacle1.cc
+[4.150s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle_plugin/obstacle2.cc
+[4.150s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacle_plugin/obstacles.cc
+[4.154s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacles/model.config
+[4.155s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_dqn_world/obstacles/model.sdf
+[4.155s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_house/model.config
+[4.155s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_house/model.sdf
+[4.157s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle/model-1_4.sdf
+[4.158s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle/model.config
+[4.158s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle/model.sdf
+[4.158s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle_pi/model-1_4_.sdf
+[4.158s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle_pi/model.config
+[4.159s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_waffle_pi/model.sdf
+[4.160s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_world/meshes/hexagon.dae
+[4.160s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_world/meshes/wall.dae
+[4.161s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_world/model-1_4.sdf
+[4.161s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_world/model.config
+[4.161s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//models/turtlebot3_world/model.sdf
+[4.161s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//rviz/tb3_gazebo.rviz
+[4.161s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//urdf/common_properties.urdf
+[4.162s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//urdf/turtlebot3_burger.urdf
+[4.162s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//urdf/turtlebot3_waffle.urdf
+[4.162s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//urdf/turtlebot3_waffle_pi.urdf
+[4.169s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/empty_world.world
+[4.170s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_dqn_stage1.world
+[4.170s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_dqn_stage2.world
+[4.170s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_dqn_stage3.world
+[4.171s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_dqn_stage4.world
+[4.171s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_house.world
+[4.171s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo//worlds/turtlebot3_world.world
+[4.171s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/include//turtlebot3_gazebo/turtlebot3_drive.hpp
+[4.172s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/ament_index/resource_index/package_run_dependencies/turtlebot3_gazebo
+[4.172s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/ament_index/resource_index/parent_prefix_path/turtlebot3_gazebo
+[4.172s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/environment/ament_prefix_path.sh
+[4.172s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/environment/ament_prefix_path.dsv
+[4.173s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/environment/path.sh
+[4.173s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/environment/path.dsv
+[4.173s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/local_setup.bash
+[4.174s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/local_setup.sh
+[4.174s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/local_setup.zsh
+[4.183s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/local_setup.dsv
+[4.183s] -- Symlinking: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/package.dsv
+[4.186s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/ament_index/resource_index/packages/turtlebot3_gazebo
+[4.187s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.187s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.187s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/cmake/turtlebot3_gazeboConfig.cmake
+[4.188s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/cmake/turtlebot3_gazeboConfig-version.cmake
+[4.189s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo/package.xml
+[4.365s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_gazebo

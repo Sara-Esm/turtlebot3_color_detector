@@ -1,0 +1,25 @@
+[0.071s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer -- -j8 -l8
+[1.070s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer -- -j8 -l8
+[1.088s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer
+[1.115s] -- Install configuration: ""
+[1.115s] -- Execute custom install script
+[1.116s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/config/turtlebot3_lds_2d.lua
+[1.118s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/launch/cartographer.launch.py
+[1.118s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/launch/occupancy_grid.launch.py
+[1.119s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/rviz/tb3_cartographer.rviz
+[1.122s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/ament_index/resource_index/package_run_dependencies/turtlebot3_cartographer
+[1.128s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/ament_index/resource_index/parent_prefix_path/turtlebot3_cartographer
+[1.129s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/environment/ament_prefix_path.sh
+[1.129s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/environment/ament_prefix_path.dsv
+[1.130s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/environment/path.sh
+[1.133s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/environment/path.dsv
+[1.134s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/local_setup.bash
+[1.135s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/local_setup.sh
+[1.138s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/local_setup.zsh
+[1.139s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/local_setup.dsv
+[1.143s] -- Symlinking: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/package.dsv
+[1.167s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/ament_index/resource_index/packages/turtlebot3_cartographer
+[1.171s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/cmake/turtlebot3_cartographerConfig.cmake
+[1.178s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/cmake/turtlebot3_cartographerConfig-version.cmake
+[1.181s] -- Up-to-date symlink: /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cartographer/share/turtlebot3_cartographer/package.xml
+[1.228s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer

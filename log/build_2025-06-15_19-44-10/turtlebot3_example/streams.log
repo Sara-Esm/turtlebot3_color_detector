@@ -1,0 +1,24 @@
+[6.352s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3/turtlebot3_example': AMENT_PREFIX_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs LD_LIBRARY_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/turtlebot3_example build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/install.log --single-version-externally-managed install_data
+[7.297s] running egg_info
+[7.297s] writing ../../../build/turtlebot3_example/turtlebot3_example.egg-info/PKG-INFO
+[7.297s] writing dependency_links to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/dependency_links.txt
+[7.297s] writing entry points to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/entry_points.txt
+[7.299s] writing requirements to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/requires.txt
+[7.300s] writing top-level names to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/top_level.txt
+[7.306s] reading manifest file '../../../build/turtlebot3_example/turtlebot3_example.egg-info/SOURCES.txt'
+[7.308s] writing manifest file '../../../build/turtlebot3_example/turtlebot3_example.egg-info/SOURCES.txt'
+[7.309s] running build
+[7.310s] running build_py
+[7.320s] running install
+[7.322s] running install_lib
+[7.342s] running install_data
+[7.343s] running install_egg_info
+[7.344s] removing '/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/python3.10/site-packages/turtlebot3_example-2.1.5-py3.10.egg-info' (and everything under it)
+[7.346s] Copying ../../../build/turtlebot3_example/turtlebot3_example.egg-info to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/python3.10/site-packages/turtlebot3_example-2.1.5-py3.10.egg-info
+[7.350s] running install_scripts
+[7.418s] Installing turtlebot3_obstacle_detection script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/turtlebot3_example
+[7.418s] Installing turtlebot3_patrol_client script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/turtlebot3_example
+[7.419s] Installing turtlebot3_patrol_server script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/turtlebot3_example
+[7.420s] Installing turtlebot3_position_control script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/turtlebot3_example
+[7.423s] writing list of installed files to '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/install.log'
+[7.537s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3/turtlebot3_example' returned '0': AMENT_PREFIX_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs LD_LIBRARY_PATH=/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/turtlebot3_example build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_example/install.log --single-version-externally-managed install_data

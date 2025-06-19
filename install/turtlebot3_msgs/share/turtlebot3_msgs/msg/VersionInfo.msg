@@ -1,0 +1,1 @@
+/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs/msg/VersionInfo.msg

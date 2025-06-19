@@ -1,0 +1,25 @@
+[2.830s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_cv': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtlebot3_cv build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/install.log --single-version-externally-managed install_data
+[3.531s] running egg_info
+[3.535s] writing ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/PKG-INFO
+[3.538s] writing dependency_links to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/dependency_links.txt
+[3.538s] writing entry points to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/entry_points.txt
+[3.538s] writing requirements to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/requires.txt
+[3.539s] writing top-level names to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/top_level.txt
+[3.540s] reading manifest file '../../build/turtlebot3_cv/turtlebot3_cv.egg-info/SOURCES.txt'
+[3.544s] writing manifest file '../../build/turtlebot3_cv/turtlebot3_cv.egg-info/SOURCES.txt'
+[3.545s] running build
+[3.545s] running build_py
+[3.545s] copying turtlebot3_cv/image_subscriber.py -> /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build/lib/turtlebot3_cv
+[3.546s] running install
+[3.547s] running install_lib
+[3.547s] copying /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build/lib/turtlebot3_cv/image_subscriber.py -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv
+[3.549s] byte-compiling /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv/image_subscriber.py to image_subscriber.cpython-310.pyc
+[3.552s] running install_data
+[3.552s] running install_egg_info
+[3.555s] removing '/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv-0.0.0-py3.10.egg-info' (and everything under it)
+[3.556s] Copying ../../build/turtlebot3_cv/turtlebot3_cv.egg-info to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv-0.0.0-py3.10.egg-info
+[3.559s] running install_scripts
+[3.598s] Installing color_detector script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+[3.598s] Installing image_subscriber script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+[3.599s] writing list of installed files to '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/install.log'
+[3.647s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_cv' returned '0': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtlebot3_cv build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/install.log --single-version-externally-managed install_data

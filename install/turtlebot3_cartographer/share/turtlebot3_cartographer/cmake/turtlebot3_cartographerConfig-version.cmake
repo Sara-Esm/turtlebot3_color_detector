@@ -1,0 +1,1 @@
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cartographer/ament_cmake_core/turtlebot3_cartographerConfig-version.cmake

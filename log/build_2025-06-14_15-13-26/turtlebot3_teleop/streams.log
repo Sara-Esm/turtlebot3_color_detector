@@ -1,0 +1,24 @@
+[2.406s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build --no-deps symlink_data
+[3.204s] running develop
+[3.746s] running egg_info
+[3.747s] creating turtlebot3_teleop.egg-info
+[3.747s] writing turtlebot3_teleop.egg-info/PKG-INFO
+[3.748s] writing dependency_links to turtlebot3_teleop.egg-info/dependency_links.txt
+[3.748s] writing entry points to turtlebot3_teleop.egg-info/entry_points.txt
+[3.749s] writing requirements to turtlebot3_teleop.egg-info/requires.txt
+[3.749s] writing top-level names to turtlebot3_teleop.egg-info/top_level.txt
+[3.749s] writing manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'
+[3.753s] reading manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'
+[3.755s] writing manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'
+[3.758s] running build_ext
+[3.758s] Creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3-teleop.egg-link (link to .)
+[3.760s] Installing teleop_keyboard script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/turtlebot3_teleop
+[3.762s] 
+[3.762s] Installed /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop
+[3.763s] running symlink_data
+[3.763s] creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/ament_index
+[3.764s] creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/ament_index/resource_index
+[3.764s] creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages
+[3.765s] symbolically linking /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/resource/turtlebot3_teleop -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages
+[3.766s] symbolically linking /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/package.xml -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/turtlebot3_teleop
+[3.828s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop' returned '0': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build --no-deps symlink_data

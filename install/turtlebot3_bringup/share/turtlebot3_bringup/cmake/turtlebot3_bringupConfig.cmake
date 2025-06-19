@@ -1,0 +1,1 @@
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_bringup/ament_cmake_core/turtlebot3_bringupConfig.cmake

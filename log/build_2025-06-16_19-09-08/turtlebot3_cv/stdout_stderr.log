@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/PKG-INFO
+writing dependency_links to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/dependency_links.txt
+writing entry points to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/entry_points.txt
+writing requirements to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/requires.txt
+writing top-level names to ../../build/turtlebot3_cv/turtlebot3_cv.egg-info/top_level.txt
+reading manifest file '../../build/turtlebot3_cv/turtlebot3_cv.egg-info/SOURCES.txt'
+writing manifest file '../../build/turtlebot3_cv/turtlebot3_cv.egg-info/SOURCES.txt'
+running build
+running build_py
+copying turtlebot3_cv/color_detector.py -> /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build/lib/turtlebot3_cv
+running install
+running install_lib
+copying /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build/lib/turtlebot3_cv/color_detector.py -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv
+byte-compiling /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv/color_detector.py to color_detector.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/turtlebot3_cv/turtlebot3_cv.egg-info to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3_cv-0.0.0-py3.10.egg-info
+running install_scripts
+Installing color_detector script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+Installing image_subscriber script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+writing list of installed files to '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/install.log'

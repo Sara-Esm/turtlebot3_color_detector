@@ -1,0 +1,19 @@
+running develop
+running egg_info
+creating turtlebot3_cv.egg-info
+writing turtlebot3_cv.egg-info/PKG-INFO
+writing dependency_links to turtlebot3_cv.egg-info/dependency_links.txt
+writing entry points to turtlebot3_cv.egg-info/entry_points.txt
+writing requirements to turtlebot3_cv.egg-info/requires.txt
+writing top-level names to turtlebot3_cv.egg-info/top_level.txt
+writing manifest file 'turtlebot3_cv.egg-info/SOURCES.txt'
+reading manifest file 'turtlebot3_cv.egg-info/SOURCES.txt'
+writing manifest file 'turtlebot3_cv.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3-cv.egg-link (link to .)
+Installing color_detector script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+Installing image_subscriber script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+
+Installed /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv
+running symlink_data
+symbolically linking /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/package.xml -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/share/turtlebot3_cv

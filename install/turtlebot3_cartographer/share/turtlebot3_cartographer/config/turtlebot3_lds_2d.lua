@@ -1,0 +1,1 @@
+/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3/turtlebot3_cartographer/config/turtlebot3_lds_2d.lua

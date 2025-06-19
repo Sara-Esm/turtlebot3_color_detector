@@ -1,0 +1,41 @@
+[2.175s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build
+[2.755s] running develop
+[3.150s] Removing /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3-teleop.egg-link (link to .)
+[3.202s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop' returned '0': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build
+[3.204s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3/turtlebot3_teleop': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/turtlebot3_teleop build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/install.log --single-version-externally-managed install_data --force
+[3.854s] running egg_info
+[3.856s] writing ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/PKG-INFO
+[3.858s] writing dependency_links to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/dependency_links.txt
+[3.859s] writing entry points to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/entry_points.txt
+[3.860s] writing requirements to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/requires.txt
+[3.861s] writing top-level names to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/top_level.txt
+[3.867s] reading manifest file '../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/SOURCES.txt'
+[3.880s] writing manifest file '../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/SOURCES.txt'
+[3.880s] running build
+[3.880s] running build_py
+[3.880s] creating /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build
+[3.881s] creating /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib
+[3.886s] creating /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop
+[3.886s] copying turtlebot3_teleop/__init__.py -> /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop
+[3.886s] creating /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[3.886s] copying turtlebot3_teleop/script/__init__.py -> /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[3.886s] copying turtlebot3_teleop/script/teleop_keyboard.py -> /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[3.887s] running install
+[3.888s] running install_lib
+[3.895s] creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop
+[3.895s] creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/script
+[3.895s] copying /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script/__init__.py -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/script
+[3.896s] copying /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script/teleop_keyboard.py -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/script
+[3.896s] copying /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/__init__.py -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop
+[3.902s] byte-compiling /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/script/__init__.py to __init__.cpython-310.pyc
+[3.903s] byte-compiling /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/script/teleop_keyboard.py to teleop_keyboard.cpython-310.pyc
+[3.906s] byte-compiling /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop/__init__.py to __init__.cpython-310.pyc
+[3.906s] running install_data
+[3.907s] copying resource/turtlebot3_teleop -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages
+[3.909s] copying package.xml -> /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/share/turtlebot3_teleop
+[3.910s] running install_egg_info
+[3.931s] Copying ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages/turtlebot3_teleop-2.1.5-py3.10.egg-info
+[3.934s] running install_scripts
+[3.999s] Installing teleop_keyboard script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/turtlebot3_teleop
+[4.001s] writing list of installed files to '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/install.log'
+[4.090s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3/turtlebot3_teleop' returned '0': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/turtlebot3_teleop build --build-base /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/build install --record /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_teleop/install.log --single-version-externally-managed install_data --force

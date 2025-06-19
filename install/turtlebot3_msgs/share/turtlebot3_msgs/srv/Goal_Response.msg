@@ -1,0 +1,1 @@
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_msgs/rosidl_cmake/srv/Goal_Response.msg

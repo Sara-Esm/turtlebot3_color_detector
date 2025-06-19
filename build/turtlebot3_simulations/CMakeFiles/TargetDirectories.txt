@@ -1,0 +1,9 @@
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/uninstall.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/turtlebot3_simulations_uninstall.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/test.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/edit_cache.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/rebuild_cache.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/list_install_components.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/install.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/install/local.dir
+/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_simulations/CMakeFiles/install/strip.dir

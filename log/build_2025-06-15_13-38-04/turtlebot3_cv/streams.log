@@ -1,0 +1,18 @@
+[2.237s] Invoking command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build --no-deps symlink_data
+[2.956s] running develop
+[3.441s] running egg_info
+[3.442s] writing turtlebot3_cv.egg-info/PKG-INFO
+[3.443s] writing dependency_links to turtlebot3_cv.egg-info/dependency_links.txt
+[3.443s] writing entry points to turtlebot3_cv.egg-info/entry_points.txt
+[3.444s] writing requirements to turtlebot3_cv.egg-info/requires.txt
+[3.444s] writing top-level names to turtlebot3_cv.egg-info/top_level.txt
+[3.450s] reading manifest file 'turtlebot3_cv.egg-info/SOURCES.txt'
+[3.451s] writing manifest file 'turtlebot3_cv.egg-info/SOURCES.txt'
+[3.456s] running build_ext
+[3.456s] Creating /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages/turtlebot3-cv.egg-link (link to .)
+[3.459s] Installing color_detector script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+[3.460s] Installing image_subscriber script to /home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/turtlebot3_cv
+[3.460s] 
+[3.461s] Installed /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv
+[3.462s] running symlink_data
+[3.516s] Invoked command in '/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv' returned '0': PYTHONPATH=/home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/owl/projects/turtlebot3_color_detector_ws/install/turtlebot3_cv/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/owl/projects/turtlebot3_color_detector_ws/build/turtlebot3_cv/build --no-deps symlink_data

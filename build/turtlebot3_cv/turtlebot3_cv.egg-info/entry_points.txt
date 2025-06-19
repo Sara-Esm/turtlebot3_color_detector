@@ -1,0 +1,4 @@
+[console_scripts]
+color_detector = turtlebot3_cv.color_detector:main
+image_subscriber = turtlebot3_cv.image_subscriber:main
+

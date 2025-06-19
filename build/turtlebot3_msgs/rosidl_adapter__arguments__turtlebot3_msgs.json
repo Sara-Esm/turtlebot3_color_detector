@@ -1,0 +1,12 @@
+{
+  "package_name": "turtlebot3_msgs",
+  "non_idl_tuples": [
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:msg/SensorState.msg",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:msg/Sound.msg",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:msg/VersionInfo.msg",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:srv/Sound.srv",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:srv/Dqn.srv",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:srv/Goal.srv",
+    "/home/owl/projects/turtlebot3_color_detector_ws/src/turtlebot3_msgs:action/Patrol.action"
+  ]
+}
