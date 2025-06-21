@@ -11,9 +11,9 @@ turtlebot3_color_detector_ws/
 ├── src/
 │   ├── turtlebot3_gazebo/              ← simulation package (includes custom world)
 │   │   ├── worlds/
-│   │   │   └── turtlebot3_house.world  ← your custom indoor Gazebo environment
+│   │   │   └── turtlebot3_house.world  ← Custom indoor Gazebo environment
 │   └── turtlebot3_color_detector/      ← custom package with CV and launch files
-│       ├── color_detector/             ← Python node to detect red color
+│       ├── color_detector/             ← Python node to detect red colour
 │       ├── launch/
 │       │   ├── house_world.launch.py   ← launches Gazebo + RViz + CV node
 │       │   └── color_node.launch.py    ← launches only the CV node
