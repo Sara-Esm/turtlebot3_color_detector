@@ -1,12 +1,6 @@
-
----
-
 ## 🧠 TurtleBot3 Color Detector in Custom House World (ROS 2 Humble + Gazebo)
 
 This ROS 2 Humble project simulates a TurtleBot3 robot navigating in a custom **house world** using Gazebo 11 under **WSL2 with WSLg** on Ubuntu 22.04. The robot uses a **real-time computer vision node** to detect red objects through its camera feed and enables basic interactive control with teleop and visualization tools like **RViz2** and **rqt\_image\_view**.
-
-> ✅ Ideal for robotics and computer vision portfolios
-> 💡 Compatible with Intel UHD 620 GPU and WSLg (no VcXsrv)
 
 ---
 
