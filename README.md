@@ -1,29 +1,30 @@
 ## 🧠 TurtleBot3 Color Detector in Custom House World (ROS 2 Humble + Gazebo)
 
-This ROS 2 Humble project simulates a TurtleBot3 robot navigating in a custom **house world** using Gazebo 11 under **WSL2 with WSLg** on Ubuntu 22.04. The robot uses a **real-time computer vision node** to detect red objects through its camera feed and enables basic interactive control with teleop and visualization tools like **RViz2** and **rqt\_image\_view**.
+A real-time **robot perception and simulation project** using a TurtleBot3 robot in a custom indoor Gazebo world.
+Built with **ROS 2 Humble**, this system features a **color detection vision node**, manual teleoperation, and full 3D visualization with **RViz2**, all running natively on **WSL2 with WSLg (Ubuntu 22.04)**.
 
 ---
 
-### 🗂️ Project Structure
+## 🗂️ Project Structure
 
 ```
 turtlebot3_color_detector_ws/
 ├── src/
-│   ├── turtlebot3_gazebo/              ← simulation package (includes custom world)
-│   │   ├── worlds/
-│   │   │   └── turtlebot3_house.world  ← Custom indoor Gazebo environment
-│   └── turtlebot3_color_detector/      ← custom package with CV and launch files
-│       ├── color_detector/             ← Python node to detect red colour
+│   ├── turtlebot3_gazebo/              ← official simulation package (custom world inside)
+│   │   └── worlds/turtlebot3_house.world
+│   └── turtlebot3_color_detector/      ← custom vision & launch package
+│       ├── color_detector/             ← red color detection node (OpenCV + ROS 2)
 │       ├── launch/
-│       │   ├── house_world.launch.py   ← launches Gazebo + RViz + CV node
-│       │   └── color_node.launch.py    ← launches only the CV node
+│       │   ├── house_world.launch.py   ← Gazebo + RViz2 + CV
+│       │   └── color_node.launch.py    ← vision node only
+├── README.md                          
 ```
 
 ---
 
-### ⚙️ Prerequisites
+## ⚙️ Setup Instructions
 
-Install the required ROS 2 and TurtleBot3 packages (if not done already):
+### 📦 Install Required Packages
 
 ```bash
 sudo apt update
@@ -33,15 +34,14 @@ sudo apt install ros-humble-turtlebot3* \
                  python3-opencv
 ```
 
-Set TurtleBot3 model (you can put this in `~/.bashrc` too):
+### 🧠 Set TurtleBot3 Model
 
 ```bash
-export TURTLEBOT3_MODEL=burger
+echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
+source ~/.bashrc
 ```
 
----
-
-### 🔧 Build the Workspace
+### 🔨 Build the Workspace
 
 ```bash
 cd ~/projects/turtlebot3_color_detector_ws
@@ -51,50 +51,49 @@ source install/setup.bash
 
 ---
 
-### 🚀 Launch the Full Simulation
+## 🧪 How to Run the Project
 
-**Gazebo + RViz2 + Color Detector Node**
+### 🏠 Launch Full Simulation: World + Robot + Camera + RViz
 
 ```bash
 ros2 launch turtlebot3_color_detector house_world.launch.py
 ```
 
-This launches:
+This will:
 
-* Your custom **house world** in Gazebo
-* A **TurtleBot3 robot** inside the house
-* The **color detector node** using the robot's camera
-* **RViz2** for real-time 3D visualization
+* Launch Gazebo 11 with a **custom indoor house world**
+* Spawn the **TurtleBot3 burger** robot
+* Activate the **real-time red object detector node**
+* Start **RViz2** for full 3D monitoring
 
 ---
 
-### 👀 View the Camera Feed
+### 🎮 Drive the Robot Manually
 
-In a separate terminal:
+In a new terminal:
+
+```bash
+source ~/projects/turtlebot3_color_detector_ws/install/setup.bash
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+Use arrow keys to move the robot toward colored objects.
+
+---
+
+### 👁️ View Live Camera Feed
+
+In another terminal:
 
 ```bash
 rqt_image_view /camera/image_raw
 ```
 
-This lets you visualize what the robot sees.
-
 ---
 
-### 🎮 Manual Control
+### 🧪 Run Vision Node Separately
 
-You can control the robot manually via keyboard teleop:
-
-```bash
-ros2 run turtlebot3_teleop teleop_keyboard
-```
-
-Use arrow keys to drive around and test how your red object appears in the camera.
-
----
-
-### 🤖 Run Only the Color Detector Node
-
-If Gazebo is already running:
+If you already have the simulation running:
 
 ```bash
 ros2 launch turtlebot3_color_detector color_node.launch.py
@@ -102,46 +101,49 @@ ros2 launch turtlebot3_color_detector color_node.launch.py
 
 ---
 
-### 📁 Custom World Location
+## 🧠 How Red Color Detection Works
 
-Your custom house world is saved at:
+The Python node in `color_detector/red_detector.py`:
 
-```
+* Subscribes to `/camera/image_raw`
+* Uses **OpenCV** + **cv\_bridge** to convert ROS images
+* Applies **HSV filtering** to detect red objects
+* Highlights the red region in the frame
+
+---
+
+## 🖼️ Custom World Info
+
+You can find and edit the world file here:
+
+```bash
 src/turtlebot3_simulations/turtlebot3_gazebo/worlds/turtlebot3_house.world
 ```
 
-You can modify or expand the environment using `.sdf` files or Gazebo UI.
+To customize:
+
+```bash
+gazebo src/turtlebot3_simulations/turtlebot3_gazebo/worlds/turtlebot3_house.world
+```
 
 ---
 
-### 📸 About the Color Detection
+## 🔍 Future Improvements
 
-The custom Python node in `color_detector/red_detector.py`:
-
-* Subscribes to `/camera/image_raw`
-* Converts image from ROS to OpenCV
-* Detects red regions using HSV thresholds
-* Optionally publishes detection info (e.g., centroid) — extendable to motion control
+* Autonomous red object following using centroid position
+* Use [YOLOv8](https://github.com/ultralytics/ultralytics) or [TinyML](https://www.edgeimpulse.com/) models for advanced detection
+* Simulate pick-and-place with robot arm based on object color
+* Integrate with SLAM (Cartographer) and Navigation2
 
 ---
 
-### ✅ System Compatibility
+## ✅ System Compatibility
 
-This project runs smoothly under:
-
-* ✅ **ROS 2 Humble**
-* ✅ **Gazebo 11**
-* ✅ **WSL2 with WSLg** (no VcXsrv needed)
-* ✅ **Intel UHD 620 GPU**
-* ✅ **Ubuntu 22.04**
-
----
-
-### 🔜 Future Upgrades (Ideas)
-
-* Automatically follow red objects
-* Add navigation goals using detected color blobs
-* Extend detection to multiple colors or shapes
-* Use YOLO or TensorFlow Lite for more advanced detection
-
+| Component  | Tested Version                 |
+| ---------- | ------------------------------ |
+| **OS**     | Ubuntu 22.04 (WSL2)            |
+| **ROS 2**  | Humble Hawksbill               |
+| **Gazebo** | Gazebo 11 (gzclient, gzserver) |
+| **GPU**    | Intel UHD 620                  |
+| **GUI**    | WSLg (no VcXsrv needed)        |
 
