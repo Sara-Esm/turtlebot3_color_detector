@@ -2,51 +2,55 @@
 
 [![ROS 2 Humble](https://img.shields.io/badge/ROS%202-Humble-blue)](https://docs.ros.org/en/humble/) [![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04-orange)](https://ubuntu.com/) [![Gazebo 11](https://img.shields.io/badge/Gazebo-11-brightgreen)](https://gazebosim.org/) [![WSL2 + WSLg](https://img.shields.io/badge/WSL2-WSLg-lightgrey)](https://learn.microsoft.com/windows/wsl/)
 
-A real-time robotics & computer vision project: a TurtleBot3 navigates a custom indoor house environment, detecting red objects via camera and OpenCV. Built using ROS 2 Humble on Ubuntu 22.04 (WSL2 + WSLg, Intel UHD 620).
-
+**Real-time robotics & computer vision project built with ROS 2 Humble, Gazebo 11, and OpenCV on Ubuntu 22.04 (WSL2 + WSLg)**
 ---
 
-## 🚀 Why This Project?
+## 🚀 Project Overview
 
-I developed this to deepen my skills in robotics and CV using ROS 2. It showcases real-time visual detection, manual control, and 3D simulation.
+This project simulates a **TurtleBot3 robot navigating a custom indoor Gazebo world**, detecting red-colored objects in real time using a USB camera and OpenCV. It demonstrates:
+
+- Real-time image processing with `cv_bridge` and OpenCV
+- Manual robot control
+- Custom launch systems
+- Full RViz2 and Gazebo visualization
 
 ---
 
 ## 🗂️ Repository Structure
 
-```text
-turtlebot3_color_detector_ws/
+```
+
+turtlebot3\_color\_detector\_ws/
 ├── src/
-│   ├── turtlebot3_gazebo/              ← Official simulation package
-│   │   └── worlds/turtlebot3_house.world  ← Custom indoor Gazebo world
-│   └── turtlebot3_color_detector/      ← Custom package
-│       ├── color_detector/
-│       │   └── red_detector.py         ← Vision node: red color detection
-│       ├── launch/
-│       │   ├── house_world.launch.py   ← Gazebo + RViz2 + CV
-│       │   └── color_node.launch.py    ← Only the CV node
+│   ├── turtlebot3\_gazebo/              # Official TB3 sim package
+│   │   └── worlds/turtlebot3\_house.world  # Custom house environment
+│   └── turtlebot3\_color\_detector/      # Custom package
+│       ├── color\_detector/
+│       │   └── red\_detector.py         # Vision node for red detection
+│       └── launch/
+│           ├── house\_world.launch.py   # Gazebo + RViz + CV
+│           └── color\_node.launch.py    # Vision node only
 ├── README.md
+
 ````
 
 ---
 
-## 🧪 What You’ll See
+## 🧪 What You'll See
 
-![Gazebo & RViz Demo](docs/demo_gazebo_rviz.png)
-
-1. **TurtleBot3 roams** around a house-like Gazebo world
-2. **Camera stream** shown in RViz2 or `rqt_image_view`
-3. **Red object detection** via HSV color filter (console logs highlight centroid)
-
-```bash
-[INFO] Red object detected at x=325 → CENTER
-```
+| Feature                     | Description                                      |
+|----------------------------|--------------------------------------------------|
+| 🏠 **Gazebo**              | Custom indoor environment with TurtleBot3       |
+| 🎮 **Manual Control**      | Teleop using keyboard                            |
+| 🔴 **Red Detection**       | OpenCV node detects red blobs in live camera feed |
+| 🧭 **RViz2**               | Visualize robot, camera, TF tree, etc.           |
+| 📸 **rqt_image_view**      | View raw camera image + detection overlay        |
 
 ---
 
-## ⚙️ Setup & Build Instructions
+## ⚙️ Setup Instructions
 
-**1. Install dependencies**
+### 1. Install Required Packages
 
 ```bash
 sudo apt update
@@ -55,16 +59,16 @@ sudo apt install \
   ros-humble-rqt-image-view \
   ros-humble-cv-bridge \
   python3-opencv
-```
+````
 
-**2. Set TurtleBot3 model**
+### 2. Set TurtleBot3 Model
 
 ```bash
 echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-**3. Build the workspace**
+### 3. Build the Workspace
 
 ```bash
 cd ~/projects/turtlebot3_color_detector_ws
@@ -74,7 +78,7 @@ source install/setup.bash
 
 ---
 
-## 🧭 Run the Project
+## ▶️ How to Run the Project
 
 ### 🔄 Full Simulation (Gazebo + RViz + CV)
 
@@ -82,58 +86,70 @@ source install/setup.bash
 ros2 launch turtlebot3_color_detector house_world.launch.py
 ```
 
-### 🎮 Manual Teleop Control
-
-In a new terminal:
+### 🎮 Manual Teleoperation
 
 ```bash
 source ~/projects/turtlebot3_color_detector_ws/install/setup.bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
-Use `w/a/s/d/x` keys to move!
+Use `W/A/S/D/X` keys to move the robot.
 
-### 👁️ Live Camera View
+### 👁️ Live Camera Feed
 
 ```bash
 rqt_image_view /camera/image_raw
 ```
 
-### 👁️ Vision Node Only
+### 💡 Vision Node Only
 
-If Gazebo already running:
+(Assuming Gazebo is already running)
 
 ```bash
-ros2 launch turtlebot3_color_detector color_node.launch.py
+ros2 run turtlebot3_cv color_detector
 ```
 
 ---
 
-## 🧠 How Red Detection Works
+## 🧠 How Red Color Detection Works
 
-* **Subscribes** to `/camera/image_raw`
-* **Converts** images via `cv_bridge`
-* **Applies** HSV thresholds to isolate red
-* **Finds** and highlights the biggest red blob
-* **Logs** centroid position: LEFT/CENTER/RIGHT
+The node in `color_detector/red_detector.py`:
 
-🔗 Check the code: [red\_detector.py](https://github.com/Sara-Esm/turtlebot3_color_detector/blob/main/src/turtlebot3_color_detector/color_detector/red_detector.py)
+* Subscribes to `/camera/image_raw`
+* Converts images to OpenCV format using `cv_bridge`
+* Applies **HSV color thresholding**
+* Finds the largest red blob
+* Logs **centroid direction** (LEFT, CENTER, RIGHT)
 
----
+Example output:
 
-## 🔧 Future Enhancements
-
-* Autonomous following of red objects using blob centroid
-* Multi-color or shape-based detection (Green, blue…)
-* Integrate ROS Navigation2 for goal-based movement
-* Depth estimation via depth camera
-* Advanced object detection: YOLO‑Tiny or TensorFlow Lite
+```
+[INFO] Red object detected at x=325 → CENTER
+```
 
 ---
 
-## ✅ Environment Compatibility
+## 📸 Screenshots
 
-| Component | Version/Tested             |
+| Gazebo Simulation    | RViz Visualization | Red Blob Detection      |
+| -------------------- | ------------------ | ----------------------- |
+| ![](docs/gazebo.png) | ![](docs/rviz.png) | ![](docs/detection.png) |
+
+---
+
+## 🛠️ Potential Improvements
+
+* ✅ Autonomous red object following
+* 🟡 Multi-color & shape detection
+* 🟡 Object classification (YOLOv8 / TinyML)
+* 🟡 Integrate with SLAM & Navigation2
+* 🟡 Use RGB-D data for depth-aware detection
+
+---
+
+## ✅ Tested Environment
+
+| Component | Version / Info             |
 | --------- | -------------------------- |
 | OS        | Ubuntu 22.04 (WSL2 + WSLg) |
 | ROS 2     | Humble Hawksbill           |
@@ -143,17 +159,8 @@ ros2 launch turtlebot3_color_detector color_node.launch.py
 
 ---
 
-## 🙋‍♀️ About Me
-
-**Sara Esmaeili**
-Electrical & Control Engineer | Robotics & AI Enthusiast
-
-* 🔗 GitHub: [Sara‑Esm](https://github.com/Sara-Esm)
-* 💼 LinkedIn: [linkedin.com/in/sara‑esmaeili‑](https://www.linkedin.com/in/sara-esmaeili-/)
-
----
-
 ## ⚖️ License
 
-This project is shared under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
+```
