@@ -1,18 +1,20 @@
-# 🧠 TurtleBot3 Color Detector in Custom House World (ROS 2 Humble + Gazebo)
+# 🧠  TurtleBot3 Color Detector in Custom Indoor World
 
 [![ROS 2 Humble](https://img.shields.io/badge/ROS%202-Humble-blue)](https://docs.ros.org/en/humble/) [![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04-orange)](https://ubuntu.com/) [![Gazebo 11](https://img.shields.io/badge/Gazebo-11-brightgreen)](https://gazebosim.org/) [![WSL2 + WSLg](https://img.shields.io/badge/WSL2-WSLg-lightgrey)](https://learn.microsoft.com/windows/wsl/)
 
-**Real-time robotics & computer vision project built with ROS 2 Humble, Gazebo 11, and OpenCV on Ubuntu 22.04 (WSL2 + WSLg)**
+**Real-time computer vision & robotics simulation using ROS 2 Humble, Gazebo 11, and OpenCV**  
+*Developed on Ubuntu 22.04 (WSL2 + WSLg) with TurtleBot3 Waffle Pi*
 ---
 
-## 🚀 Project Overview
+## 🚀 Overview
 
-This project simulates a **TurtleBot3 robot navigating a custom indoor Gazebo world**, detecting red-colored objects in real time using a USB camera and OpenCV. It demonstrates:
+This project simulates a **TurtleBot3 robot navigating a custom Gazebo house environment**, detecting **red-colored objects** in real-time using onboard camera feeds and OpenCV processing.
 
-- Real-time image processing with `cv_bridge` and OpenCV
-- Manual robot control
-- Custom launch systems
-- Full RViz2 and Gazebo visualization
+- Real-time image processing via `cv_bridge` + `OpenCV`
+- Manual teleoperation control
+- Visualizations in **Gazebo**, **RViz2**, and **rqt_image_view**
+- Custom ROS 2 launch systems
+- ROS 2 Humble + Gazebo 11 integration under **WSL2 + WSLg**
 
 ---
 
@@ -38,19 +40,19 @@ turtlebot3\_color\_detector\_ws/
 
 ## 🧪 What You'll See
 
-| Feature                     | Description                                      |
+| Feature                    | Description                                      |
 |----------------------------|--------------------------------------------------|
 | 🏠 **Gazebo**              | Custom indoor environment with TurtleBot3       |
-| 🎮 **Manual Control**      | Teleop using keyboard                            |
-| 🔴 **Red Detection**       | OpenCV node detects red blobs in live camera feed |
-| 🧭 **RViz2**               | Visualize robot, camera, TF tree, etc.           |
-| 📸 **rqt_image_view**      | View raw camera image + detection overlay        |
+| 🎮 **Teleoperation**       | Keyboard-based manual robot control             |
+| 🔴 **Red Detection**       | Real-time HSV blob detection using OpenCV       |
+| 🧭 **RViz2**               | Robot + camera + transform frames               |
+| 📸 ***Camera Feed**        | Raw image stream and processed result (rqt)     |
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### 1. Install Required Packages
+### 1. Install Dependencies
 
 ```bash
 sudo apt update
@@ -80,13 +82,13 @@ source install/setup.bash
 
 ## ▶️ How to Run the Project
 
-### 🔄 Full Simulation (Gazebo + RViz + CV)
+### 🔄 Full Simulation (Gazebo + RViz2 + CV Node)
 
 ```bash
 ros2 launch turtlebot3_color_detector house_world.launch.py
 ```
 
-### 🎮 Manual Teleoperation
+### 🎮 Manual Teleop Control
 
 ```bash
 source ~/projects/turtlebot3_color_detector_ws/install/setup.bash
@@ -95,35 +97,27 @@ ros2 run turtlebot3_teleop teleop_keyboard
 
 Use `W/A/S/D/X` keys to move the robot.
 
-### 👁️ Live Camera Feed
+### 👁️  Camera View via rqt_image_view
 
 ```bash
 rqt_image_view /camera/image_raw
 ```
 
-### 💡 Vision Node Only
-
-(Assuming Gazebo is already running)
+### 💡 Vision Node Only (If Gazebo is already running)
 
 ```bash
 ros2 run turtlebot3_cv color_detector
 ```
 
----
+## 🧠 How It Works (Red Object Detection)
 
-## 🧠 How Red Color Detection Works
+1. Subscribes to: `/camera/image_raw`
+2. Converts images from ROS to OpenCV format (`cv_bridge`)
+3. Applies HSV thresholding to isolate red
+4. Finds the largest red blob
+5. Logs position as `LEFT`, `CENTER`, or `RIGHT` based on centroid
 
-The node in `color_detector/red_detector.py`:
-
-* Subscribes to `/camera/image_raw`
-* Converts images to OpenCV format using `cv_bridge`
-* Applies **HSV color thresholding**
-* Finds the largest red blob
-* Logs **centroid direction** (LEFT, CENTER, RIGHT)
-
-Example output:
-
-```
+```bash
 [INFO] Red object detected at x=325 → CENTER
 ```
 
@@ -131,31 +125,32 @@ Example output:
 
 ## 📸 Screenshots
 
-| Gazebo Simulation    | RViz Visualization | Red Blob Detection      |
-| -------------------- | ------------------ | ----------------------- |
-| ![](docs/gazebo.png) | ![](docs/rviz.png) | ![](docs/detection.png) |
+| Gazebo Simulation    | RViz2 Visualization | Red Blob Detection      |
+| -------------------- | ------------------- | ----------------------- |
+| ![](docs/gazebo.png) | ![](docs/rviz.png)  | ![](docs/detection.png) |
 
 ---
 
-## 🛠️ Potential Improvements
+## 🔧 Future Work
 
-* ✅ Autonomous red object following
-* 🟡 Multi-color & shape detection
-* 🟡 Object classification (YOLOv8 / TinyML)
-* 🟡 Integrate with SLAM & Navigation2
-* 🟡 Use RGB-D data for depth-aware detection
+* ✅ Make robot follow red objects automatically
+* 🔲 Add multi-color detection (e.g., green, blue)
+* 🔲 Shape detection using contours
+* 🔲 YOLOv8 or TinyML-based detection
+* 🔲 Add SLAM + Navigation2 stack
+* 🔲 Use depth camera to estimate object distance
 
 ---
 
 ## ✅ Tested Environment
 
-| Component | Version / Info             |
-| --------- | -------------------------- |
-| OS        | Ubuntu 22.04 (WSL2 + WSLg) |
-| ROS 2     | Humble Hawksbill           |
-| Gazebo    | 11                         |
-| GPU       | Intel UHD 620              |
-| GUI       | WSLg (no VcXsrv needed)    |
+| Component  | Version / Config           |
+| ---------- | -------------------------- |
+| OS         | Ubuntu 22.04 (WSL2 + WSLg) |
+| ROS 2      | Humble Hawksbill           |
+| Gazebo     | Version 11                 |
+| GPU        | Intel UHD 620              |
+| GUI Server | WSLg (no need for VcXsrv)  |
 
 ---
 
