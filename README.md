@@ -46,7 +46,7 @@ turtlebot3\_color\_detector\_ws/
 | 🎮 **Teleoperation**       | Keyboard-based manual robot control             |
 | 🔴 **Red Detection**       | Real-time HSV blob detection using OpenCV       |
 | 🧭 **RViz2**               | Robot + camera + transform frames               |
-| 📸 ***Camera Feed**        | Raw image stream and processed result (rqt)     |
+| 📸 **Camera Feed**        | Raw image stream and processed result (rqt)      |
 
 ---
 
