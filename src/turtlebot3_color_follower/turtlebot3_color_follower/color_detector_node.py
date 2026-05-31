@@ -17,8 +17,6 @@ Key engineering challenge solved:
        A circular target scores close to 1.0. Only contours with
        circularity > 0.45 are accepted as valid targets.
 
-    Combined, these filters make detection robust in cluttered indoor environments.
-
 Topics published:
     /color_follower/detected          std_msgs/Bool
     /color_follower/normalized_error  std_msgs/Float32  [-1.0, 1.0]
@@ -36,42 +34,35 @@ import cv2
 import numpy as np
 import math
 
-
-# HSV color ranges — saturation minimum raised to 150 to reject brownish walls
 COLOR_RANGES = {
-    'red': [
-        (np.array([0,   150,  70]), np.array([10,  255, 255])),   # lower red
-        (np.array([170, 150,  70]), np.array([180, 255, 255])),   # upper red
+    "red": [
+        (np.array([0,   200,  70]), np.array([10,  255, 255])),
+        (np.array([170, 200,  70]), np.array([180, 255, 255])),
     ],
-    'green': [
+    "green": [
         (np.array([40,  150,  70]), np.array([80,  255, 255])),
     ],
-    'blue': [
+    "blue": [
         (np.array([100, 150,  70]), np.array([130, 255, 255])),
     ],
-    'yellow': [
+    "yellow": [
         (np.array([20,  150,  70]), np.array([35,  255, 255])),
     ],
 }
 
 DEBUG_COLORS = {
-    'red':    (0,   0,   255),
-    'green':  (0,   255, 0),
-    'blue':   (255, 0,   0),
-    'yellow': (0,   255, 255),
+    "red":    (0,   0,   255),
+    "green":  (0,   255, 0),
+    "blue":   (255, 0,   0),
+    "yellow": (0,   255, 255),
 }
 
 
 def compute_circularity(contour) -> float:
     """
-    Circularity = 4π * area / perimeter²
-
-    Perfect circle  → 1.0
-    Square          → 0.785
-    Elongated shape → approaches 0.0
-
-    Using circularity > 0.45 rejects wall segments while accepting
-    roughly circular targets (spheres, cylinders, boxes).
+    Circularity = 4pi * area / perimeter^2
+    Perfect circle = 1.0, elongated shape approaches 0.0
+    Using > 0.45 rejects wall segments while accepting circular targets.
     """
     area = cv2.contourArea(contour)
     perimeter = cv2.arcLength(contour, True)
@@ -81,45 +72,30 @@ def compute_circularity(contour) -> float:
 
 
 class ColorDetectorNode(Node):
-    """
-    Robust color detection node with false-positive rejection.
-
-    Filtering pipeline:
-        Raw HSV mask
-            → minimum saturation filter (rejects brownish walls)
-            → morphological cleanup (removes noise)
-            → minimum area threshold (rejects tiny blobs)
-            → circularity filter (rejects elongated wall segments)
-            → EMA smoothing (reduces centroid jitter)
-            → publish normalized error + area
-    """
 
     def __init__(self):
-        super().__init__('color_detector_node')
+        super().__init__("color_detector_node")
 
-        # --- Parameters ---
-        self.declare_parameter('image_topic',         '/camera/image_raw')
-        self.declare_parameter('target_color',        'red')
-        self.declare_parameter('min_area',            800.0)
-        self.declare_parameter('min_circularity',     0.45)
-        self.declare_parameter('smoothing_alpha',     0.5)
-        self.declare_parameter('show_debug_window',   False)
+        self.declare_parameter("image_topic",       "/camera/image_raw")
+        self.declare_parameter("target_color",      "red")
+        self.declare_parameter("min_area",          800.0)
+        self.declare_parameter("min_circularity",   0.45)
+        self.declare_parameter("smoothing_alpha",   0.5)
+        self.declare_parameter("show_debug_window", False)
 
-        self.image_topic   = self.get_parameter('image_topic').value
-        self.target_color  = self.get_parameter('target_color').value.lower()
-        self.min_area      = self.get_parameter('min_area').value
-        self.min_circ      = self.get_parameter('min_circularity').value
-        self.alpha         = self.get_parameter('smoothing_alpha').value
-        self.show_debug    = self.get_parameter('show_debug_window').value
+        self.image_topic  = self.get_parameter("image_topic").value
+        self.target_color = self.get_parameter("target_color").value.lower()
+        self.min_area     = self.get_parameter("min_area").value
+        self.min_circ     = self.get_parameter("min_circularity").value
+        self.alpha        = self.get_parameter("smoothing_alpha").value
+        self.show_debug   = self.get_parameter("show_debug_window").value
 
         if self.target_color not in COLOR_RANGES:
             self.get_logger().warn(
-                f"Unknown color '{self.target_color}'. Defaulting to 'red'. "
-                f"Supported: {list(COLOR_RANGES.keys())}"
+                f"Unknown color {self.target_color}. Defaulting to red."
             )
-            self.target_color = 'red'
+            self.target_color = "red"
 
-        # --- ROS interfaces ---
         qos = QoSProfile(depth=5)
         self.bridge = CvBridge()
 
@@ -127,21 +103,20 @@ class ColorDetectorNode(Node):
             Image, self.image_topic, self.image_callback, qos
         )
 
-        self.pub_detected = self.create_publisher(Bool,    '/color_follower/detected',         10)
-        self.pub_error    = self.create_publisher(Float32, '/color_follower/normalized_error',  10)
-        self.pub_area     = self.create_publisher(Float32, '/color_follower/target_area',       10)
-        self.pub_debug    = self.create_publisher(Image,   '/color_follower/debug_image',       qos)
+        self.pub_detected = self.create_publisher(Bool,    "/color_follower/detected",         10)
+        self.pub_error    = self.create_publisher(Float32, "/color_follower/normalized_error",  10)
+        self.pub_area     = self.create_publisher(Float32, "/color_follower/target_area",       10)
+        self.pub_debug    = self.create_publisher(Image,   "/color_follower/debug_image",       qos)
 
-        # --- Internal state ---
         self.smoothed_cx   = None
         self.smoothed_area = None
 
         self.get_logger().info(
-            f'ColorDetectorNode started | target: {self.target_color.upper()} | '
-            f'min_area: {self.min_area} | min_circularity: {self.min_circ}'
+            f"ColorDetectorNode started | target: {self.target_color.upper()} | "
+            f"min_area: {self.min_area} | min_circularity: {self.min_circ}"
         )
 
-    def _build_mask(self, hsv: np.ndarray) -> np.ndarray:
+    def _build_mask(self, hsv):
         mask = np.zeros(hsv.shape[:2], dtype=np.uint8)
         for (lower, upper) in COLOR_RANGES[self.target_color]:
             mask = cv2.bitwise_or(mask, cv2.inRange(hsv, lower, upper))
@@ -150,7 +125,7 @@ class ColorDetectorNode(Node):
         mask = cv2.morphologyEx(mask, cv2.MORPH_DILATE, kernel, iterations=1)
         return mask
 
-    def _smooth(self, cx: float, area: float):
+    def _smooth(self, cx, area):
         if self.smoothed_cx is None:
             self.smoothed_cx, self.smoothed_area = cx, area
         else:
@@ -158,11 +133,11 @@ class ColorDetectorNode(Node):
             self.smoothed_cx   = a * cx   + (1.0 - a) * self.smoothed_cx
             self.smoothed_area = a * area + (1.0 - a) * self.smoothed_area
 
-    def image_callback(self, msg: Image):
+    def image_callback(self, msg):
         try:
-            frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+            frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
         except CvBridgeError as e:
-            self.get_logger().error(f'cv_bridge error: {e}')
+            self.get_logger().error(f"cv_bridge error: {e}")
             return
 
         h, w   = frame.shape[:2]
@@ -179,7 +154,6 @@ class ColorDetectorNode(Node):
         norm_area  = 0.0
         debug      = frame.copy()
 
-        # Draw center line on debug image
         cv2.line(debug, (w // 2, 0), (w // 2, h), (200, 200, 200), 1)
 
         best_contour = None
@@ -189,26 +163,20 @@ class ColorDetectorNode(Node):
             area = float(cv2.contourArea(c))
             if area < self.min_area:
                 continue
-
             circularity = compute_circularity(c)
-
-            # Draw rejected candidates in grey with reason
             if circularity < self.min_circ:
                 cv2.drawContours(debug, [c], -1, (100, 100, 100), 1)
                 self.get_logger().debug(
-                    f'Rejected: area={area:.0f} circularity={circularity:.2f} '
-                    f'(below min {self.min_circ}) — likely wall segment'
+                    f"Rejected: area={area:.0f} circularity={circularity:.2f} - wall segment"
                 )
                 continue
-
-            # Valid candidate
             if area > best_area:
                 best_area    = area
                 best_contour = c
 
         if best_contour is not None:
             M  = cv2.moments(best_contour)
-            cx = float(M['m10'] / M['m00']) if M['m00'] != 0 else w / 2.0
+            cx = float(M["m10"] / M["m00"]) if M["m00"] != 0 else w / 2.0
             self._smooth(cx, best_area)
 
             norm_error = (self.smoothed_cx - w / 2.0) / (w / 2.0)
@@ -223,36 +191,33 @@ class ColorDetectorNode(Node):
             cv2.circle(debug, (cx_int, h // 2), 8, color, -1)
             cv2.putText(
                 debug,
-                f'{self.target_color.upper()} | err={norm_error:+.2f} '
-                f'circ={circ:.2f} area={norm_area:.4f}',
+                f"{self.target_color.upper()} err={norm_error:+.2f} circ={circ:.2f}",
                 (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.55, color, 2
             )
 
             self.get_logger().info(
-                f'TARGET | err={norm_error:+.3f} '
-                f'circularity={circ:.2f} area={norm_area:.4f}',
+                f"TARGET | err={norm_error:+.3f} circularity={circ:.2f} area={norm_area:.4f}",
                 throttle_duration_sec=0.5
             )
         else:
             self.smoothed_cx   = None
             self.smoothed_area = None
 
-        # Publish
         self.pub_detected.publish(Bool(data=detected))
         self.pub_error.publish(Float32(data=float(norm_error)))
         self.pub_area.publish(Float32(data=float(norm_area)))
 
         try:
             self.pub_debug.publish(
-                self.bridge.cv2_to_imgmsg(debug, encoding='bgr8')
+                self.bridge.cv2_to_imgmsg(debug, encoding="bgr8")
             )
         except CvBridgeError:
             pass
 
         if self.show_debug:
             try:
-                cv2.imshow('Color Follower - Camera', debug)
-                cv2.imshow('Color Follower - Mask',   mask)
+                cv2.imshow("Color Follower - Camera", debug)
+                cv2.imshow("Color Follower - Mask",   mask)
                 cv2.waitKey(1)
             except Exception:
                 pass
@@ -274,5 +239,5 @@ def main(args=None):
             pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

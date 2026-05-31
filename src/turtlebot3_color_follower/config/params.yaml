@@ -1,0 +1,22 @@
+color_detector_node:
+  ros__parameters:
+    image_topic:        /camera/image_raw
+    target_color:       red
+    min_area:           800.0
+    min_circularity:    0.60
+    smoothing_alpha:    0.5
+    show_debug_window:  false
+
+smc_motion_controller_node:
+  ros__parameters:
+    cmd_vel_topic:        /cmd_vel
+    search_angular_speed: 0.3
+    linear_speed:         0.15
+    max_angular_speed:    0.6
+    center_tolerance:     0.08
+    max_area_threshold:   0.08
+    lost_timeout:         1.5
+    smc_lambda:  1.5
+    smc_k_s:     0.5
+    smc_k_eq:    0.3
+    smc_phi:     0.1
