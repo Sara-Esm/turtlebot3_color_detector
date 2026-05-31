@@ -1,379 +1,195 @@
-# TurtleBot3 Semi-Autonomous Color Follower with ROS 2 and OpenCV
+# 🤖 TurtleBot3 Semi-Autonomous Color Follower
 
 ![ROS2](https://img.shields.io/badge/ROS2-Humble-blue)
-![Python](https://img.shields.io/badge/Python-ROS2-yellow)
-![OpenCV](https://img.shields.io/badge/OpenCV-Computer_Vision-green)
-![Gazebo](https://img.shields.io/badge/Gazebo-Simulation-orange)
+![OpenCV](https://img.shields.io/badge/OpenCV-4-red)
+![Gazebo](https://img.shields.io/badge/Gazebo-11-orange)
 ![License](https://img.shields.io/badge/License-MIT-brightgreen)
 
----
-
-# Overview
-
-This project demonstrates a semi-autonomous TurtleBot3 robot behavior using ROS 2 Humble, OpenCV, Gazebo, and Python.
-
-The robot is manually driven through a simulated house environment. While moving, it continuously processes the camera stream to detect a red object. When the red object appears in view, the robot switches into an object-following behavior by aligning with the object and publishing velocity commands.
-
-This project focuses on perception-triggered robot control, computer vision integration, and reactive robotic behavior using ROS 2.
+> A perception-triggered autonomous behaviour system for TurtleBot3. The robot continuously processes its camera stream and autonomously switches into object-following mode when a red target enters its field of view — no human input required once the target is detected.
 
 ---
 
-# Project Motivation
+## 📽️ Demo
 
-The goal of this project was to build a practical perception-based robotic behavior where a mobile robot can use camera input to understand its environment and react autonomously.
-
-The project combines:
-
-- Manual robot teleoperation
-- Real-time camera processing
-- OpenCV computer vision
-- ROS 2 communication
-- Reactive robot control
-- Gazebo simulation workflows
+*
 
 ---
 
-# Demo Features
+## ✨ Features
 
-The system demonstrates:
-
-- TurtleBot3 simulation in Gazebo
-- Manual robot teleoperation
-- Real-time camera image processing
-- Red object detection using OpenCV
-- HSV color filtering
-- Object centroid tracking
-- Velocity command publishing
-- Perception-triggered object-following behavior
-- ROS 2 Python node development
-- RQt and RViz2 debugging workflow
+- **Perception-triggered autonomy** — robot switches from manual to autonomous mode on object detection
+- **Real-time HSV colour filtering** — OpenCV detects red objects with tuned threshold masks
+- **Centroid tracking** — calculates object center and aligns robot heading dynamically
+- **Reactive velocity control** — publishes `/cmd_vel` commands based on object position in frame
+- **Live debug visualization** — rqt_image_view shows processed camera stream with detection overlay
 
 ---
 
-# Technologies Used
+## 🏗️ System Architecture
 
-| Technology | Purpose |
-|---|---|
-| ROS 2 Humble | Robotics middleware |
-| Python | Robot perception and control node |
-| OpenCV | Image processing and color detection |
-| Gazebo | Robot simulation |
-| TurtleBot3 | Mobile robot platform |
-| cv_bridge | ROS image to OpenCV image conversion |
-| RQt Image View | Camera stream debugging |
-| RViz2 | Robot and sensor visualization |
-| Colcon | ROS 2 build system |
-| Git & GitHub | Version control |
-
----
-
-# System Architecture
-
-```text
-Gazebo Camera Sensor
-        |
-        v
-ROS 2 Image Topic
-        |
-        v
-cv_bridge
-        |
-        v
-OpenCV HSV Color Filtering
-        |
-        v
-Object Centroid Detection
-        |
-        v
-Motion Control Logic
-        |
-        v
-/cmd_vel Velocity Commands
-        |
-        v
-TurtleBot3 Robot Movement
+```
+┌─────────────────────────────────────────────────┐
+│              Gazebo Simulation                  │
+│  ┌──────────────────┐   ┌─────────────────────┐ │
+│  │  TurtleBot3      │   │   Camera Sensor     │ │
+│  │  waffle_pi       │   │  /camera/image_raw  │ │
+│  └────────┬─────────┘   └──────────┬──────────┘ │
+└───────────┼──────────────────────  ┼────────────┘
+            │                        │
+            │           ┌────────────▼───────────┐
+            │           │    color_detector.py   │
+            │           │                        │
+            │           │  cv_bridge conversion  │
+            │           │  BGR → HSV filtering   │
+            │           │  contour detection     │
+            │           │  centroid calculation  │
+            │           └────────────┬───────────┘
+            │                        │
+            └────────────────────────▼
+                     /cmd_vel
+              (geometry_msgs/Twist)
 ```
 
----
+### ROS 2 Topics
 
-# Robot Behavior
-
-The robot follows this perception-control workflow:
-
-1. Manually drive the TurtleBot3 through the Gazebo house environment
-2. Receive live camera images from the robot camera
-3. Convert ROS image messages into OpenCV format
-4. Convert image from BGR to HSV color space
-5. Apply red color threshold mask
-6. Detect the largest red object
-7. Calculate object center position
-8. Rotate robot toward detected object
-9. Move forward when object is centered
-10. Stop when object is lost
+| Topic | Type | Description |
+|---|---|---|
+| `/camera/image_raw` | `sensor_msgs/Image` | Robot camera feed |
+| `/cmd_vel` | `geometry_msgs/Twist` | Velocity commands to robot |
 
 ---
 
-# Workspace Structure
+## 📦 Package Structure
 
-```text
+```
 turtlebot3_color_follower/
-├── README.md
-├── .gitignore
 └── src/
     └── turtlebot3_color_follower/
         ├── launch/
         │   └── color_detector.launch.py
+        ├── turtlebot3_color_follower/
+        │   └── color_detector.py      # Main perception + control node
         ├── package.xml
-        ├── resource/
-        │   └── turtlebot3_color_follower
-        ├── setup.cfg
-        ├── setup.py
-        └── turtlebot3_color_follower/
-            ├── __init__.py
-            └── color_detector.py
+        └── setup.py
 ```
 
 ---
 
-# Important Package
+## 🤖 Robot Behavior
 
-## turtlebot3_color_follower
+The robot follows a perception-control loop:
 
-This package contains the main computer vision and robot control logic.
-
-Main files:
-
-```text
-color_detector.py
-color_detector.launch.py
-package.xml
-setup.py
+```
+[MANUAL MODE] Teleoperate through environment
+      │
+      ▼
+[PERCEPTION] Camera stream → HSV filtering → contour detection
+      │
+      ├── No red object → continue manual mode
+      │
+      └── Red object detected
+            │
+            ▼
+      [AUTO MODE] Calculate centroid → align heading → move forward
+            │
+            └── Object lost → stop and return to manual mode
 ```
 
 ---
 
-# Main Node
+## 🛠️ Tech Stack
 
-## color_detector.py
-
-The main Python ROS 2 node performs:
-
-- Camera topic subscription
-- Image conversion using cv_bridge
-- HSV filtering for red object detection
-- Object contour detection
-- Centroid calculation
-- Robot motion control
-- Velocity command publishing to `/cmd_vel`
+| Component | Technology |
+|---|---|
+| Robot OS | ROS 2 Humble Hawksbill |
+| Computer Vision | OpenCV 4, HSV color filtering |
+| Robot Model | TurtleBot3 Waffle Pi |
+| Simulation | Gazebo Classic 11 |
+| Language | Python 3 |
+| Platform | Ubuntu 22.04 / WSL2 |
 
 ---
 
-# Topics Used
+## 🚀 Getting Started
 
-| Topic | Type | Purpose |
-|---|---|---|
-| /camera/image_raw | sensor_msgs/Image | Receives camera frames |
-| /cmd_vel | geometry_msgs/Twist | Sends velocity commands to robot |
+### Prerequisites
 
----
+```bash
+sudo apt install ros-humble-desktop
+sudo apt install ros-humble-turtlebot3*
+sudo apt install ros-humble-gazebo-ros-pkgs
+sudo apt install python3-opencv ros-humble-cv-bridge
+```
 
-# How to Build
+### Build
 
 ```bash
 cd ~/projects/turtlebot3_color_follower
-
 source /opt/ros/humble/setup.bash
-
 colcon build
-
 source install/setup.bash
 ```
 
----
+### Run
 
-# Run the Project
-
-## Terminal 1 — Launch TurtleBot3 Gazebo Simulation
-
+**Terminal 1 — Gazebo simulation:**
 ```bash
-cd ~/projects/turtlebot3_color_follower
-
-source /opt/ros/humble/setup.bash
-
 export TURTLEBOT3_MODEL=waffle_pi
-
 ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
 ```
 
----
-
-## Terminal 2 — Run Color Follower Node
-
+**Terminal 2 — Color follower node:**
 ```bash
-cd ~/projects/turtlebot3_color_follower
-
-source /opt/ros/humble/setup.bash
 source install/setup.bash
-
 ros2 launch turtlebot3_color_follower color_detector.launch.py
 ```
 
----
-
-## Terminal 3 — Manual Teleoperation
-
-Use keyboard teleoperation to manually drive the TurtleBot3 through the house environment.
-
+**Terminal 3 — Manual teleoperation:**
 ```bash
-source /opt/ros/humble/setup.bash
-
 export TURTLEBOT3_MODEL=waffle_pi
-
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
-While the robot is manually driven, the color follower node continuously monitors the camera stream.
-
-When a red object appears in the camera view, the robot switches into object-following behavior by publishing velocity commands to `/cmd_vel`.
-
----
-
-## Terminal 4 — View Camera Feed
-
+**Terminal 4 — Camera feed (optional):**
 ```bash
-source /opt/ros/humble/setup.bash
-
 rqt_image_view /camera/image_raw
 ```
 
 ---
 
-# Debugging Commands
+## 🔑 Key Implementation Details
 
-## Check camera topic
+**Color Detection** (`color_detector.py`)
+- Converts camera frames from BGR to HSV color space for lighting-robust detection
+- Applies tuned red HSV threshold mask to isolate target object
+- Finds contours and selects largest valid object to filter noise
+- Calculates centroid from bounding moments for precise alignment
 
-```bash
-ros2 topic hz /camera/image_raw
-```
-
-## Check velocity commands
-
-```bash
-ros2 topic echo /cmd_vel
-```
-
-## View ROS 2 node graph
-
-```bash
-ros2 run rqt_graph rqt_graph
-```
-
-## Launch RViz2
-
-```bash
-ros2 launch turtlebot3_bringup rviz2.launch.py
-```
+**Reactive Control**
+- Compares centroid x-position to image center to determine rotation direction
+- Publishes angular velocity to `/cmd_vel` to align robot heading with object
+- Switches to forward linear velocity once object is centered in frame
+- Stops all motion when object is no longer detected
 
 ---
 
-# Example Behavior
+## 🔭 Future Work
 
-```text
-Camera image received
-Red object detected
-Object center calculated
-Robot rotating toward object
-Robot moving forward
-Object lost
-Robot stopping
-```
+- [ ] Multi-color target support with dynamic color selection
+- [ ] Distance estimation from object bounding box size
+- [ ] Fully autonomous room exploration with color search
+- [ ] PID controller for smoother tracking behavior
+- [ ] 3D target localization using depth camera
 
 ---
 
-# Challenges Solved During Development
+## 👩‍💻 Author
 
-This project involved solving several robotics and computer vision integration challenges:
-
-- Connecting Gazebo camera output to a ROS 2 perception node
-- Converting ROS image messages into OpenCV images
-- Tuning HSV thresholds for red object detection
-- Filtering image noise and identifying the largest valid object
-- Translating image position into robot motion commands
-- Debugging `/cmd_vel` publishing behavior
-- Testing perception behavior in simulation
-- Running ROS 2 Humble with Gazebo inside WSL2 + WSLg
+**Sara Esmaeili** — Robotics Software Engineer
+GitHub: [@Sara-Esm](https://github.com/Sara-Esm)
 
 ---
 
-# Project Preview
+## 📄 License
 
-Screenshots##
-
-- Gazebo TurtleBot3 house simulation
-- Manual teleoperation through the house
-- Camera stream with red object detection
-- Robot switching into object-following behavior
-- RQt image viewer output
-- RViz2 visualization
-- Terminal output showing active ROS 2 node execution
-
----
-
-# Learning Outcomes
-
-This project provided hands-on experience with:
-
-- ROS 2 Python node development
-- ROS 2 publisher/subscriber communication
-- Computer vision for robotics
-- OpenCV HSV color filtering
-- Camera-based robot behavior
-- TurtleBot3 simulation
-- Gazebo camera sensor workflow
-- Velocity command control
-- Robotics debugging tools
-- Perception-control integration
-
----
-
-# Key Engineering Skills Demonstrated
-
-- ROS 2 package development
-- Python robotics programming
-- OpenCV computer vision
-- Real-time image processing
-- Mobile robot control
-- Sensor-based robot behavior
-- Gazebo simulation
-- ROS 2 topic debugging
-- Linux and WSL2 robotics workflow
-- Git and GitHub version control
-- Robotics system integration
-
----
-
-# Future Improvements
-
-Potential future upgrades:
-
-- Add support for multiple target colors
-- Add dynamic parameter tuning for HSV thresholds
-- Add distance estimation from object size
-- Add autonomous room exploration
-
----
-
-# Author
-
-Sara Esmaeili
-
-Electrical and Control Engineer focused on Robotics, Autonomous Navigation, ROS 2, AI, and Machine Learning.
-
-GitHub:
-https://github.com/Sara-Esm
-
----
-
-# License
-
-This project is licensed under the MIT License.
+MIT License — see [LICENSE](LICENSE) for details.
