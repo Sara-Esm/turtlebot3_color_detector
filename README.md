@@ -8,8 +8,6 @@
 
 ## 📽️ Demo
 
-**Scenario:** Robot patrols a house environment. Operator drives toward garbage bin marked with a red fiducial tag. Robot autonomously detects, aligns, approaches, and stops in front of the target.
-
 ---
 
 ## 🏗️ Architecture
