@@ -1,4 +1,3 @@
-cat > ~/projects/turtlebot3_color_follower/README.md << 'READMEOF'
 # 🤖 TurtleBot3 Semi-Autonomous Visual Servoing System
 
 ![ROS2](https://img.shields.io/badge/ROS2-Humble-blue)
