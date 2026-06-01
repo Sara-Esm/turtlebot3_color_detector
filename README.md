@@ -1,20 +1,36 @@
-# TurtleBot3 Semi-Autonomous Visual Servoing with Sliding Mode Control
+# 🤖 TurtleBot3 Semi-Autonomous Visual Servoing with Sliding Mode Control
 
-![ROS2](https://img.shields.io/badge/ROS2-Humble-blue) ![OpenCV](https://img.shields.io/badge/OpenCV-4-red) ![Control](https://img.shields.io/badge/Control-SMC-green) ![Python](https://img.shields.io/badge/Python-3.10-yellow) ![License](https://img.shields.io/badge/License-MIT-brightgreen)
-
-> A semi-autonomous mobile robot system combining human-directed navigation with autonomous visual servoing. The operator drives freely via teleop; when a colored fiducial marker is detected, the robot autonomously aligns, approaches, and stops — powered by Sliding Mode Control.
-
----
-
-## Demo
-
-
-https://github.com/user-attachments/assets/60436f64-30e6-46a5-8ce2-c5195511c0dd
-
+![ROS2](https://img.shields.io/badge/ROS2-Humble-blue)
+![OpenCV](https://img.shields.io/badge/OpenCV-4-red)
+![Control](https://img.shields.io/badge/Control-SMC-green)
+![Python](https://img.shields.io/badge/Python-3.10-yellow)
+![License](https://img.shields.io/badge/License-MIT-brightgreen)
 
 ---
 
-## Architecture
+> A semi-autonomous mobile robot system combining human-directed navigation with autonomous visual servoing. The operator drives freely via teleop; when a colored fiducial marker is detected (e.g. on a garbage bin), the robot autonomously aligns, approaches, and stops — powered by Sliding Mode Control.
+
+---
+
+## 📽️ Demo
+
+**Scenario:** Operator drives robot toward a garbage bin marked with a red fiducial tag. SMC autonomously detects, aligns, approaches, and stops in front of the target. Human control is instantly restored when the target is lost.
+
+---
+
+## ✨ Features
+
+- **Semi-autonomous shared control** — human drives freely; SMC takes over on target detection
+- **Velocity multiplexer (mux)** — SMC node forwards teleop in WAITING, overrides in active states
+- **Robust color detection** — two-stage HSV saturation + circularity filter eliminates brick wall false positives
+- **Sliding Mode Control** — nonlinear controller with chattering suppression for smooth visual alignment
+- **Active braking** — counters Gazebo inertia for clean stops in front of target
+- **Real-time state machine** — explicit transitions: WAITING → ALIGNING → APPROACHING → HOLDING
+- **Multi-node ROS 2 architecture** — decoupled perception and control nodes
+
+---
+
+## 🏗️ System Architecture
 
 ```
 Teleop Keyboard
@@ -22,10 +38,10 @@ Teleop Keyboard
       ▼
 ┌─────────────────────────────────────────────────────────┐
 │               smc_controller_node                       │
-│  WAITING  → forwards teleop to /cmd_vel (human drives)  │
-│  ALIGNING → SMC angular control (overrides teleop)      │
+│  WAITING    → forwards teleop to /cmd_vel               │
+│  ALIGNING   → SMC angular control (overrides teleop)    │
 │  APPROACHING → SMC linear + angular control             │
-│  HOLDING  → active braking (overrides teleop)           │
+│  HOLDING    → active braking (overrides teleop)         │
 └─────────────────────────────────────────────────────────┘
       ▲                            │ /cmd_vel
       │ /color_follower/*          ▼
@@ -35,26 +51,26 @@ Teleop Keyboard
 └──────────────────┘
 ```
 
-### ROS Topics
+### ROS 2 Topic Graph
 
-| Topic | Type | Purpose |
-|-------|------|---------|
-| `/camera/image_raw` | Image | Robot camera stream |
-| `/cmd_vel_teleop` | Twist | Human teleop input |
-| `/color_follower/detected` | Bool | Target found |
-| `/color_follower/normalized_error` | Float32 | Lateral error [-1, 1] |
-| `/color_follower/target_area` | Float32 | Target size [0, 1] |
-| `/cmd_vel` | Twist | Final velocity to robot |
-| `/color_follower/state` | String | Current state |
+| Topic | Type | Description |
+|-------|------|-------------|
+| `/camera/image_raw` | `sensor_msgs/Image` | Robot camera stream |
+| `/cmd_vel_teleop` | `geometry_msgs/Twist` | Human teleop input |
+| `/color_follower/detected` | `std_msgs/Bool` | Target found |
+| `/color_follower/normalized_error` | `std_msgs/Float32` | Lateral error [-1, 1] |
+| `/color_follower/target_area` | `std_msgs/Float32` | Target size [0, 1] |
+| `/cmd_vel` | `geometry_msgs/Twist` | Final velocity to robot |
+| `/color_follower/state` | `std_msgs/String` | Current state |
 
 ---
 
-## State Machine
+## 🔄 State Machine
 
 ```
 WAITING ──detected──► ALIGNING ──centered──► APPROACHING ──close──► HOLDING
    ▲                      │                       │                     │
-   └──────────── LOST ◄───┴───────────────────────┘          active brake
+   └──────────── LOST ◄───┴───────────────────────┘           active brake
 ```
 
 | State | Behavior |
@@ -67,24 +83,24 @@ WAITING ──detected──► ALIGNING ──centered──► APPROACHING ─
 
 ---
 
-## Robust Perception: Solving False Positives
+## 🔍 Robust Perception: Solving False Positives
 
-**Challenge:** The house environment has reddish-brown brick walls that triggered false detections.
+**Challenge:** The house environment has reddish-brown brick walls that triggered false detections with naive HSV filtering.
 
 **Two-stage filter:**
 
-1. **Saturation ≥ 200** — Bricks have S~130-160; pure red marker has S~255. Bricks rejected.
-2. **Circularity ≥ 0.60** — Wall segments score C=0.3-0.5; spherical marker scores C0.80+. Rejected.
+1. **Saturation >= 200** — Bricks score S=130-160; pure red marker scores S=255. Bricks rejected.
+2. **Circularity >= 0.60** — Wall segments score C=0.3-0.5; spherical marker scores C=0.80+. Rejected.
 
 **Result:** 0% false positives on brick walls in a realistic environment.
 
 ---
 
-## Sliding Mode Control
+## 🧮 Sliding Mode Control
 
-The controller implements SMC for lateral alignment during approach:
+The controller implements SMC for lateral visual alignment during approach:
 
-- **Sliding surface:** `s = ė + λe`  
+- **Sliding surface:** `s = ė + λe`
 - **Control law:** `u = -k_s · tanh(s/φ) - k_eq · e`
 - **Chattering suppression:** tanh boundary layer (φ = 0.1)
 
@@ -97,21 +113,21 @@ The controller implements SMC for lateral alignment during approach:
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Component | Technology |
 |-----------|-----------|
-| Robot OS | ROS 2 Humble |
+| Robot OS | ROS 2 Humble Hawksbill |
 | Robot | TurtleBot3 Waffle Pi |
 | Simulation | Gazebo Classic 11 |
 | Vision | OpenCV 4 |
-| Control | Sliding Mode Control |
+| Control | Sliding Mode Control (SMC) |
 | Language | Python 3.10 |
 | Platform | Ubuntu 22.04 / WSL2 |
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -131,19 +147,19 @@ source install/setup.bash
 
 ### Run
 
-**Terminal 1 — Gazebo house:**
+**Terminal 1 — Gazebo house environment:**
 ```bash
 export TURTLEBOT3_MODEL=waffle_pi
 ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
 ```
 
-**Terminal 2 — Color follower (auto-spawns red marker):**
+**Terminal 2 — Color follower system (auto-spawns red marker):**
 ```bash
 source install/setup.bash
 ros2 launch turtlebot3_color_follower color_follower.launch.py
 ```
 
-**Terminal 3 — Teleop (remapped for SMC mux):**
+**Terminal 3 — Teleop (remapped for SMC velocity mux):**
 ```bash
 export TURTLEBOT3_MODEL=waffle_pi
 ros2 run turtlebot3_teleop teleop_keyboard --ros-args --remap /cmd_vel:=/cmd_vel_teleop
@@ -158,25 +174,58 @@ ros2 run turtlebot3_teleop teleop_keyboard --ros-args --remap /cmd_vel:=/cmd_vel
 
 ---
 
-## Performance
+## 📊 Results
 
 | Metric | Value |
 |--------|-------|
 | Detection rate | 30 Hz |
 | False-positive rate (brick walls) | 0% |
-| Circularity of target (sphere) | ~0.82 |
+| Circularity of red sphere target | ~0.82 |
 | Max angular speed | 0.6 rad/s |
 | Approach speed | 0.06 m/s |
+| Control method | Sliding Mode Control |
 
 ---
 
-## Author
+## 🔑 Key Implementation Details
 
-**Sara Esmaeili** — Robotics Software Engineer
+**Velocity Multiplexer** (`smc_controller_node.py`)
+- Subscribes to `/cmd_vel_teleop` and `/color_follower/*`
+- In WAITING state: forwards teleop Twist directly to `/cmd_vel`
+- In active states: SMC commands override teleop completely
+- Active braking on HOLDING entry counteracts Gazebo differential drive inertia
+
+**Color Detector** (`color_detector_node.py`)
+- Dual HSV range for red (0-10° and 170-180°) handles hue wrap-around
+- EMA smoothing (α=0.5) reduces detection noise
+- Rejected candidates drawn in grey on debug image for transparency
+- Publishes normalized error [-1,1] and normalized area [0,1]
+
+**SMC Controller** (`smc_controller_node.py`)
+- Sliding surface with derivative and proportional error terms
+- tanh boundary layer eliminates high-frequency chattering
+- center_tolerance threshold triggers APPROACHING from ALIGNING
+
+---
+
+## 🔭 Future Work
+
+- [ ] YOLO-based object detection (detect unmarked garbage bins)
+- [ ] Depth camera integration for metric distance estimation
+- [ ] Real TurtleBot3 hardware deployment
+- [ ] Multi-target tracking and prioritization
+- [ ] Autonomous recovery behaviors when target is lost
+- [ ] ROS 2 lifecycle node management
+
+---
+
+## 👩‍💻 Author
+
+**Sara Esmaeili** — Robotics Software Engineer 
 GitHub: [@Sara-Esm](https://github.com/Sara-Esm)  
 
 ---
 
-## License
+## 📄 License
 
-MIT License
+MIT License — see [LICENSE](LICENSE) for details.
