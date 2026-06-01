@@ -74,7 +74,7 @@ WAITING ──detected──► ALIGNING ──centered──► APPROACHING ─
 **Two-stage filter:**
 
 1. **Saturation ≥ 200** — Bricks have S~130-160; pure red marker has S~255. Bricks rejected.
-2. **Circularity ≥ 0.60** — Wall segments score C~0.3-0.5; spherical marker scores C~0.80+. Rejected.
+2. **Circularity ≥ 0.60** — Wall segments score C=0.3-0.5; spherical marker scores C0.80+. Rejected.
 
 **Result:** 0% false positives on brick walls in a realistic environment.
 
