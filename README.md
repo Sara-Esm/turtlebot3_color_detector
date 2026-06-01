@@ -14,7 +14,9 @@
 
 ## 📽️ Demo
 
-**Scenario:** Operator drives robot toward a garbage bin marked with a red fiducial tag. SMC autonomously detects, aligns, approaches, and stops in front of the target. Human control is instantly restored when the target is lost.
+
+https://github.com/user-attachments/assets/b22fccbc-473e-4455-bf2d-c72cf6341a84
+
 
 ---
 
