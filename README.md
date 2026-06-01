@@ -2,7 +2,7 @@
 
 ![ROS2](https://img.shields.io/badge/ROS2-Humble-blue) ![OpenCV](https://img.shields.io/badge/OpenCV-4-red) ![Control](https://img.shields.io/badge/Control-SMC-green) ![Python](https://img.shields.io/badge/Python-3.10-yellow) ![License](https://img.shields.io/badge/License-MIT-brightgreen)
 
-> A semi-autonomous mobile robot system combining human-directed navigation with autonomous visual servoing. The operator drives freely via teleop; when a colored fiducial marker is detected (e.g. on a garbage bin), the robot autonomously aligns, approaches, and stops — powered by Sliding Mode Control.
+> A semi-autonomous mobile robot system combining human-directed navigation with autonomous visual servoing. The operator drives freely via teleop; when a colored fiducial marker is detected, the robot autonomously aligns, approaches, and stops — powered by Sliding Mode Control.
 
 ---
 
