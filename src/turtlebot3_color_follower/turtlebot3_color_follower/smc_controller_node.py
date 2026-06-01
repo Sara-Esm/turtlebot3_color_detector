@@ -122,6 +122,9 @@ class SMCMotionControllerNode(Node):
 
         self.cmd_pub   = self.create_publisher(Twist,  cmd_topic,               10)
         self.state_pub = self.create_publisher(String, "/color_follower/state", 10)
+        self.teleop_twist = Twist()
+        self.teleop_sub   = self.create_subscription(
+            Twist, "/cmd_vel_teleop", self._teleop_cb, 10)
 
         self.create_timer(0.05, self._control_loop)
 
@@ -154,6 +157,9 @@ class SMCMotionControllerNode(Node):
             self.state = new_state
             if new_state in (State.WAITING, State.LOST):
                 self.smc.reset()
+
+    def _teleop_cb(self, msg):
+        self.teleop_twist = msg
 
     def _update_state(self):
         elapsed = time.monotonic() - self.last_detected_time
@@ -192,13 +198,20 @@ class SMCMotionControllerNode(Node):
         self.state_pub.publish(String(data=self.state.value))
 
         if self.state == State.WAITING:
-            # Human has full control via teleop — SMC publishes nothing
+            # Forward teleop commands — human drives freely
+            self.cmd_pub.publish(self.teleop_twist)
             self.get_logger().info(
                 "[ WAITING ] Drive robot toward target — SMC will take over on detection",
                 throttle_duration_sec=2.0
             )
             return
 
+        elif self.state == State.HOLDING:
+            # Actively brake to counter Gazebo inertia
+            brake = Twist()
+            brake.linear.x = -0.03
+            self.cmd_pub.publish(brake)
+            return
         elif self.state == State.LOST:
             # Brief stop then return to WAITING
             stop = Twist()
